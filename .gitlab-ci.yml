@@ -190,7 +190,7 @@ pup5.latest-unit:
 
 # Acceptance tests
 # ==============================================================================
-acceptance-default:
+default-acceptance:
   stage: acceptance
   tags:
     - beaker
@@ -201,7 +201,7 @@ acceptance-default:
   script:
     - bundle exec rake beaker:suites[default]
 
-acceptance-fips-default:
+fips-acceptance:
   stage: acceptance
   tags:
     - beaker
@@ -213,7 +213,7 @@ acceptance-fips-default:
   script:
     - bundle exec rake beaker:suites[default]
 
-acceptance-puppet5-default:
+puppet5-acceptance:
   stage: acceptance
   tags:
     - beaker
@@ -224,7 +224,7 @@ acceptance-puppet5-default:
   script:
     - bundle exec rake beaker:suites[default]
 
-acceptance-fips-puppet5-default:
+fips-puppet5-acceptance:
   stage: acceptance
   tags:
     - beaker
@@ -236,7 +236,7 @@ acceptance-fips-puppet5-default:
   script:
     - bundle exec rake beaker:suites[default]
 
-acceptance-oel-puppet5-default:
+oel-puppet5-acceptance:
   stage: acceptance
   tags:
     - beaker
