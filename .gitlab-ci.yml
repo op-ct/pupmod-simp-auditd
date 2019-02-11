@@ -182,3 +182,42 @@ pup6-unit:
   <<: *pup_6
   <<: *unit_tests
 
+# Acceptance Tests
+#-----------------------------------------------------------------------
+
+pup4.10-acceptance:	
+  <<: *pup_4_10_X
+  <<: *acceptance_base
+  script:	
+    - 'bundle exec rake beaker:suites'	
+
+ pup4.10-fips-acceptance:	
+  <<: *pup_4_10_X	
+  <<: *acceptance_base	
+  script:	
+    - 'BEAKER_fips=yes bundle exec rake beaker:suites'	
+
+ pup5.5-acceptance:	
+  <<: *pup_5_5_7	
+  <<: *acceptance_base	
+  script:	
+    - 'bundle exec rake beaker:suites'	
+
+ pup5.5-fips-acceptance:	
+  <<: *pup_5_5_7	
+  <<: *acceptance_base	
+  script:	
+    - 'BEAKER_fips=yes bundle exec rake beaker:suites'	
+
+ pup5.5-oel-acceptance:	
+  <<: *pup_5_5_7	
+  <<: *acceptance_base	
+  script:	
+    - 'bundle exec rake beaker:suites[default,oel]'	
+
+
+ pup5.5-fips-compliance:	
+  <<: *pup_5_5_7	
+  <<: *compliance_base	
+  script:	
+    - 'BEAKER_fips=yes bundle exec rake beaker:suites[compliance]'
