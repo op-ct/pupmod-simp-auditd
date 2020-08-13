@@ -1,4 +1,3 @@
-# NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
 #
 # @summary Provides global audit rule configuration and a base set of audit rules based on the built-in audit profile(s).
 #

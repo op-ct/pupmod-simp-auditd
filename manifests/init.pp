@@ -3,6 +3,7 @@
 # Any variable that is not described here can be found in auditd.conf(5) and
 # auditctl(8).
 #
+# @see auditd::config::audit_profiles
 # @see auditd.conf(5)
 # @see auditctl(8)
 #
@@ -56,7 +57,7 @@
 #     effectively concatenated in the order the profiles are listed.
 #   - To add rules to the base set, use `auditd::rule`.
 #   - To manage the audit rules, yourself, set this parameter to `[]`.
-#   - @see `auditd::config::audit_profiles` for more details about this
+#   - See `auditd::config::audit_profiles` for more details about this
 #     configuration.
 #
 # @param service_name

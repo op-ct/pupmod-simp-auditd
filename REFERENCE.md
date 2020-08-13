@@ -5,19 +5,24 @@
 
 **Classes**
 
+_Public Classes_
+
 * [`auditd`](#auditd): Configure the audit daemon for use with a specified audit profile.
-* [`auditd::config`](#auditdconfig): This class is called from auditd for service config.
 * [`auditd::config::audisp`](#auditdconfigaudisp): Configures the audit dispatcher primarily for sending audit logs directly to syslog without intervention.
 * [`auditd::config::audisp::syslog`](#auditdconfigaudispsyslog): Utilizes rsyslog to send all audit records to syslog.
-* [`auditd::config::audisp_service`](#auditdconfigaudisp_service): Make sure the audispd process keeps running.
 * [`auditd::config::audit_profiles`](#auditdconfigaudit_profiles): Provides global audit rule configuration and a base set of audit rules based on the built-in audit profile(s).
 * [`auditd::config::audit_profiles::custom`](#auditdconfigaudit_profilescustom): A set of user specified rules in a form that is easy to manipulate via Hiera
 * [`auditd::config::audit_profiles::simp`](#auditdconfigaudit_profilessimp): A set of general purpose audit rules that should meet most security policy requirements
 * [`auditd::config::audit_profiles::stig`](#auditdconfigaudit_profilesstig): A set of audit rules that are configured to satisfy DISA STIG compliance checks for EL7.
 * [`auditd::config::grub`](#auditdconfiggrub): Enables/disables auditing at boot time.
-* [`auditd::config::logging`](#auditdconfiglogging): Ensures that logging rules are defined.
-* [`auditd::install`](#auditdinstall): Install the auditd packages
-* [`auditd::service`](#auditdservice): Ensure that the auditd service is running
+
+_Private Classes_
+
+* `auditd::config`: This class is called from auditd for service config.
+* `auditd::config::audisp_service`: Make sure the audispd process keeps running.
+* `auditd::config::logging`: Ensures that logging rules are defined.
+* `auditd::install`: Install the auditd packages
+* `auditd::service`: Ensure that the auditd service is running
 
 **Defined types**
 
@@ -35,6 +40,7 @@ Any variable that is not described here can be found in auditd.conf(5) and
 auditctl(8).
 
 * **See also**
+auditd::config::audit_profiles
 auditd.conf(5)
 auditctl(8)
 
@@ -130,7 +136,7 @@ of audit rules.
   effectively concatenated in the order the profiles are listed.
 - To add rules to the base set, use `auditd::rule`.
 - To manage the audit rules, yourself, set this parameter to `[]`.
-- @see `auditd::config::audit_profiles` for more details about this
+- See `auditd::config::audit_profiles` for more details about this
   configuration.
 
 Default value: [ 'simp' ]
@@ -418,10 +424,6 @@ sufficient since all other invalid system actions are already audited.
 
 Default value: `undef`
 
-### auditd::config
-
-NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
-
 ### auditd::config::audisp
 
 All parameters are documented in audispd.conf(5) with the exception
@@ -547,15 +549,7 @@ for the `auditd` services.
 
 Default value: simplib::lookup('simp_options::syslog', { 'default_value' => false })
 
-### auditd::config::audisp_service
-
-NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
-
-Should only be called from audisp processing services.
-
 ### auditd::config::audit_profiles
-
-NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
 
 The configuration generated is contained in a set of files in
 `/etc/audit/rules.d`, which `augenrules` parses for `auditd` in
@@ -575,7 +569,7 @@ file. The generated files are as follows:
   - Nominal base rules for one or more built-in profiles.
   - One file will exist for each desired, built-in profile
   - Files are named so that the ordering of profiles listed
-    in `$::auditd::default_audit_profiles` is preserved
+    in `$auditd::default_audit_profiles` is preserved
   - The corresponding class for each profile is
    `auditd::config::audit_profiles::<profile name>`
 - `60_custom.rules`: Custom rules as defined by the ``auditd::custom_rules``
@@ -586,11 +580,13 @@ file. The generated files are as follows:
 - `75.rotated_audit_logs.rules`
    - Watch rules for permissions changes to the rotated `auditd` log files
 - `99_tail.rules`
-  - `auditctl` immutable option, when `$::auditd::immutable` is 'true'
+  - `auditctl` immutable option, when `$auditd::immutable` is 'true'
 
 ### auditd::config::audit_profiles::custom
 
-**NO SANITY CHECKING IS PERFORMED ON THE RESULTING RULES**
+A set of user specified rules in a form that is easy to manipulate via Hiera
+
+* **Note** NO SANITY CHECKING IS PERFORMED ON THE RESULTING RULES
 
 #### Examples
 
@@ -1756,38 +1752,6 @@ The following parameters are available in the `auditd::config::grub` class.
 Data type: `Boolean`
 
 Enable auditing in the kernel at boot time.
-
-Default value: `true`
-
-### auditd::config::logging
-
-NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
-
-### auditd::install
-
-NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
-
-### auditd::service
-
-NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
-
-#### Parameters
-
-The following parameters are available in the `auditd::service` class.
-
-##### `ensure`
-
-Data type: `Any`
-
-``ensure`` state from the service resource
-
-Default value: 'running'
-
-##### `enable`
-
-Data type: `Any`
-
-``enable`` state from the service resource
 
 Default value: `true`
 

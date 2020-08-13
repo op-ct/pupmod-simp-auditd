@@ -1,10 +1,12 @@
-# NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
+# @note THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
 #
 # @summary Make sure the audispd process keeps running.
 #
 # Should only be called from audisp processing services.
 #
 # @author https://github.com/simp/pupmod-simp-auditd/graphs/contributors
+#
+# @api private
 #
 class auditd::config::audisp_service {
   assert_private()

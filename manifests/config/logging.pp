@@ -1,6 +1,6 @@
-# NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
-#
 # @summary Ensures that logging rules are defined.
+#
+# @api private
 #
 # @author https://github.com/simp/pupmod-simp-auditd/graphs/contributors
 #

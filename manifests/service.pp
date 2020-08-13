@@ -1,6 +1,8 @@
-# NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
+# @note THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
 #
 # @summary Ensure that the auditd service is running
+#
+# @api private
 #
 # @param ensure
 #   ``ensure`` state from the service resource

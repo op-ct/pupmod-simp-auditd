@@ -1,5 +1,7 @@
 # NOTE: THIS IS A [PRIVATE](https://github.com/puppetlabs/puppetlabs-stdlib#assert_private) CLASS**
 #
+# @api private
+#
 # @summary This class is called from auditd for service config.
 #
 # @author https://github.com/simp/pupmod-simp-auditd/graphs/contributors

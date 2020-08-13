@@ -1,6 +1,6 @@
 # @summary A set of user specified rules in a form that is easy to manipulate via Hiera
 #
-# **NO SANITY CHECKING IS PERFORMED ON THE RESULTING RULES**
+# @note NO SANITY CHECKING IS PERFORMED ON THE RESULTING RULES
 #
 # @example Passing an Array of Rules
 #
